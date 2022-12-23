@@ -1,0 +1,20 @@
+$back-color: #fff;
+$text-color: #000;
+
+$logo-size: 36px;
+$nav-size: 24px;
+
+@mixin font-header {
+  font-family: PingFang SC;
+  font-weight: 500;
+}
+
+@mixin Logo-size {
+  @include font-header;
+  font-size: $logo-size;
+}
+
+@mixin nav-size {
+  @include font-header;
+  font-size: $nav-size;
+}
