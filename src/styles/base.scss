@@ -1,20 +1,46 @@
 $back-color: #fff;
 $text-color: #000;
+$back-common-color: #ededed;
 
 $logo-size: 36px;
 $nav-size: 24px;
+$declare-title-size: 128px;
 
 @mixin font-header {
   font-family: PingFang SC;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 @mixin Logo-size {
   @include font-header;
   font-size: $logo-size;
+  color: $text-color;
 }
 
 @mixin nav-size {
   @include font-header;
   font-size: $nav-size;
+  color: $text-color;
+}
+
+@mixin dec-title {
+  font-family: PingFangSC-Heavy;
+  font-weight: 400;
+  font-size: $declare-title-size;
+  color: $text-color;
+}
+
+@mixin dec-text {
+  @include nav-size;
+  line-height: 175%;
+}
+
+@mixin intro-title {
+  @include Logo-size;
+  font-weight: bold;
+}
+
+@mixin intro-text {
+  @include dec-text;
+  text-indent: 48px;
 }
