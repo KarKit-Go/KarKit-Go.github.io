@@ -42,6 +42,43 @@
         justify-content: center;
         flex-direction: column;
 
+        // 正常变化
+        // transition: background-color 1s;
+        // &:hover {
+        //   background-color: base.$hover-color;
+        //   transition: background-color 1s;
+        // }
+
+        // // 方向渐变
+        // position: relative;
+        // background-color: #fff;
+        // &::before,
+        // &::after {
+        //   content: "";
+        //   position: absolute;
+        //   left: 0;
+        //   top: 0;
+        //   width: 0;
+        //   height: 100%;
+        //   background: #fff;
+        //   z-index: -1;
+        // }
+
+        // &::before {
+        //   z-index: 1;
+        //   background-color: base.$hover-color;
+        //   transition: 1s;
+        // }
+
+        // &:hover {
+        //   background: transparent;
+        // }
+
+        // &:hover::before,
+        // &:hover::after {
+        //   width: 100%;
+        // }
+
         a {
           text-decoration: none;
           color: base.$text-color;
@@ -49,8 +86,18 @@
           height: 42px;
           margin: 0 10px;
           line-height: 42px;
+          z-index: 2;
         }
       }
+    }
+  }
+}
+
+// media query
+.wrapper {
+  @media (max-width: 992px) {
+    nav {
+      display: none;
     }
   }
 }
