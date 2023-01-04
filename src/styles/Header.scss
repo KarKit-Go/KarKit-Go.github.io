@@ -1,13 +1,13 @@
 @use "./base.scss";
 .wrapper {
   width: 100%;
-  height: 90px;
+  height: 72px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   background-color: base.$back-color;
 
-  gap: 149px;
+  gap: 128px;
 
   //   //   some test
 
@@ -16,14 +16,19 @@
   //   right: 0;
   //   top: 0;
   //   z-index: 2;
-  //   //   end
+  //   //   //   end
 
   .logo {
-    width: 327px;
+    width: 180px;
     height: 100%;
-    line-height: 90px;
+    line-height: 72px;
     // margin-top: 27px;
     @include base.Logo-size;
+
+    a {
+      color: base.$text-color;
+      text-decoration: none;
+    }
   }
 
   nav {
@@ -32,7 +37,7 @@
       gap: 53px;
       margin: 0;
       padding: 0;
-      margin-top: 18px;
+      margin-top: 5px;
       .nav-item {
         text-decoration: none;
         @include base.nav-size;
@@ -41,13 +46,20 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        border-radius: 5px;
 
         // 正常变化
-        // transition: background-color 1s;
-        // &:hover {
-        //   background-color: base.$hover-color;
-        //   transition: background-color 1s;
-        // }
+        transition: all 0.3s;
+        &:hover {
+          font-weight: bold;
+          transition: all 0.3s;
+        }
+
+        &.active {
+          font-weight: bold;
+          background-color: base.$back-common-color;
+          transition: all 0.5s;
+        }
 
         // // 方向渐变
         // position: relative;
@@ -93,11 +105,11 @@
   }
 }
 
-// media query
-.wrapper {
-  @media (max-width: 992px) {
-    nav {
-      display: none;
-    }
-  }
-}
+// // media query
+// .wrapper {
+//   @media (max-width: 992px) {
+//     nav {
+//       display: none;
+//     }
+//   }
+// }
