@@ -20,9 +20,9 @@
 
   .logo {
     width: 327px;
-    height: 53px;
-    line-height: 53px;
-    margin-top: 27px;
+    height: 100%;
+    line-height: 90px;
+    // margin-top: 27px;
     @include base.Logo-size;
   }
 
