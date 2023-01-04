@@ -1,6 +1,33 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "../styles/Homepage.scss";
 
 const Homepage = () => {
+  //   const [declare, setDeclare] = useState<string[]>([]);
+  //   const [intro, setIntro] = useState<string[]>([]);
+
+  //   useEffect(() => {
+  //     const url =
+  //       "https://api.github.com/repos/KarKit-Go/KarKit-Go.github.io/issues/1";
+  //     axios
+  //       .get(url)
+  //       .then((res) => {
+  //         const data = res.data.body.split(/[\n]/);
+  //         console.log(data);
+
+  //         setIntro(data);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //     // const url2 =
+  //     //   "https://api.github.com/repos/KarKit-Go/KarKit-Go.github.io/issues/2";
+  //     // axios.get(url2).then((res) => {
+  //     //   const data = res.data.body;
+  //     //   setDeclare(data);
+  //     // });
+  //   }, []);
+
   return (
     <>
       <div className="banner">
@@ -19,6 +46,12 @@ const Homepage = () => {
         <div className="intro-container">
           <div className="intro-title">简介</div>
           <div className="main-text">
+            {/* {intro.map((item, index) => (
+              <div className="intro-main-text" key={index}>
+                {" "}
+                {item}
+              </div>
+            ))} */}
             <div className="intro-main-text">
               {" "}
               为特殊用户、以及特殊情境下的用户做设计，是设计师和设计专业学生感兴趣的话题。然而，当真正开展设计时我们却发现，作为设计师的我们往往很难，或者说需要花费很多时间和成本才能接触到真实的用户。而现有的“模拟器”之类的工具也有着娱乐性大于仿真度、模拟体验不够真实、受限于特殊设备等等弊端，无法满足设计师的需求。有没有什么方法能够帮助设计师们更好地以低成本实现特色情境的模拟、帮助他们完成初步的共情或者测试？
