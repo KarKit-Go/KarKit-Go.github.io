@@ -1,0 +1,12 @@
+@use "./base.scss";
+
+.team {
+  background-color: base.$back-common-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .pic {
+    width: 100%;
+    max-width: 850px;
+  }
+}
