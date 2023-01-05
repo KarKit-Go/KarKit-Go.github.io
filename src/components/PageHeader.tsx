@@ -15,6 +15,15 @@ export const PageHeader = (props: IPageHeader) => {
   );
 };
 
+export const PageHeaderCommon = (props: IPageHeader) => {
+  const { text } = props;
+  return (
+    <div className="page-header-common">
+      <div className="text">{text}</div>
+    </div>
+  );
+};
+
 export const PageFooter = (props: IPageHeader) => {
   const { text = "-KarKit-" } = props;
   return (
