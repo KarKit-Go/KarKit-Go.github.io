@@ -1,0 +1,117 @@
+@use "./base.scss";
+
+.catalog-wrapper {
+  width: 400px;
+  height: auto;
+  background-color: base.$back-color;
+  position: absolute;
+  top: 72px;
+  z-index: 1;
+  filter: drop-shadow(0px 4px 11px rgba(0, 0, 0, 0.1));
+  position: fixed;
+
+  .container {
+    margin-top: 72px;
+    margin-left: 224px;
+    margin-bottom: 72px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .item-wrapper {
+      width: 100%;
+      height: 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      .item {
+        @include base.catalog-text;
+        color: rgba(0, 0, 0, 0.5);
+        transition: all 0.5s;
+      }
+
+      &:hover {
+        .item {
+          color: rgb(0, 0, 0);
+          transition: all 0.5s;
+        }
+      }
+
+      &.active {
+        background-color: base.$back-common-color;
+
+        transition: all 0.5s;
+
+        .item {
+          color: rgb(0, 0, 0);
+        }
+      }
+    }
+  }
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 164px;
+
+  background-color: base.$back-common-color;
+
+  .blank-l {
+    flex-basis: 580px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 430px;
+  }
+
+  .content-container {
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+    padding-top: 32px;
+    flex-direction: column;
+    gap: 120px;
+
+    max-width: 840px;
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      //   width: 820px;
+
+      .section-title {
+        @include base.title-second-text;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      .section-words {
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        gap: 30px;
+
+        .section-word {
+          @include base.content-text;
+          text-indent: 48px;
+        }
+
+        .pic {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+  .blank-r {
+    flex-basis: 150px;
+    flex-grow: 2.5;
+    flex-shrink: 0;
+  }
+}
