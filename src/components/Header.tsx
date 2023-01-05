@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "../styles/Header.scss";
 import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
@@ -40,6 +40,10 @@ const dictList = [
 const Header = () => {
   const location = useLocation();
   const [activeID, setActiveID] = useState<string>(dict[location.pathname]);
+
+  useEffect(() => {
+    setActiveID(activeID);
+  }, [location]);
 
   const changeActive = (text: string) => {
     setActiveID(text);
