@@ -102,6 +102,12 @@ $text-gray-mobile: 10px;
   font-size: $title-second-mobile;
 }
 
+@mixin content-text {
+  @include text-base;
+  font-size: $text-content;
+  line-height: 175%;
+}
+
 @mixin catalog-text {
   @include font-header;
   font-size: $nav-size;
