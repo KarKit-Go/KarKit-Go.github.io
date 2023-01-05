@@ -102,6 +102,24 @@ $text-gray-mobile: 10px;
   font-size: $title-second-mobile;
 }
 
+@mixin title-third-text {
+  @include text-base;
+  font-size: $title-third;
+  color: $text-color;
+}
+@mixin title-third-text-mobile {
+  @include text-base;
+  font-size: $title-third-mobile;
+  color: $text-color;
+}
+
+@mixin text-gray {
+  @include text-base;
+  font-size: $text-gray;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 155%;
+}
+
 @mixin content-text {
   @include text-base;
   font-size: $text-content;
