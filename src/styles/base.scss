@@ -1,15 +1,36 @@
 $back-color: #fff;
 $text-color: #000;
-$back-common-color: #ededed;
+$back-common-color: #f3f3f3;
 $hover-color: #efefef;
 
 $logo-size: 36px;
 $nav-size: 24px;
 $declare-title-size: 128px;
 
+$title-first: 80px;
+$title-first-mobile: 24px;
+
+$title-second: 40px;
+$title-second-mobile: 20px;
+
+$title-third: 28px;
+$title-third-mobile: 16px;
+
+$text-content: 24px;
+$text-content-mobile: 14px;
+
+$text-gray: 16px;
+$text-gray-mobile: 10px;
+
 @mixin font-header {
   font-family: PingFang SC;
   font-weight: 400;
+}
+
+@mixin text-base {
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: $text-color;
 }
 
 @mixin Logo-size {
@@ -44,4 +65,46 @@ $declare-title-size: 128px;
 @mixin intro-text {
   @include dec-text;
   text-indent: 48px;
+}
+
+// $title-first: 80px;
+// $title-first-mobile: 24px;
+
+// $title-second: 40px;
+// $title-second-mobile: 20px;
+
+// $title-third: 28px;
+// $title-third-mobile: 16px;
+
+// $text-content: 24px;
+// $text-content-mobile: 14px;
+
+// $text-gray: 16px;
+// $text-gray-mobile: 10px;
+
+@mixin title-first-text {
+  @include text-base;
+  font-size: $title-first;
+}
+
+@mixin title-first-text-mobile {
+  @include text-base;
+  font-size: $title-first-mobile;
+}
+
+@mixin title-second-text {
+  @include text-base;
+  font-size: $title-second;
+}
+
+@mixin title-second-text-mobile {
+  @include text-base;
+  font-size: $title-second-mobile;
+}
+
+@mixin catalog-text {
+  @include font-header;
+  font-size: $nav-size;
+  color: $text-color;
+  font-weight: bold;
 }
