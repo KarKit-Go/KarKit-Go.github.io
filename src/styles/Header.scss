@@ -140,7 +140,7 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    z-index: 3;
+    z-index: 5;
     padding-left: 72px;
     padding-right: 72px;
 
@@ -260,6 +260,20 @@
         height: 48px;
         margin-right: 72px;
         z-index: 15;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .header {
+    .wrapper {
+      .logo {
+        padding-left: 32px;
+      }
+
+      .ham {
+        margin-right: 36px;
       }
     }
   }
