@@ -21,21 +21,6 @@ const Catalog = (props: ICatalog) => {
             </div>
           );
         })}
-        <div className="item-wrapper active">
-          <div className="item">测试设计</div>
-        </div>
-        <div className="item-wrapper">
-          <div className="item">测试设计</div>
-        </div>
-        <div className="item-wrapper">
-          <div className="item">测试设计</div>
-        </div>
-        <div className="item-wrapper">
-          <div className="item">测试设计</div>
-        </div>
-        <div className="item-wrapper">
-          <div className="item">测试设计</div>
-        </div>
       </div>
     </div>
   );
