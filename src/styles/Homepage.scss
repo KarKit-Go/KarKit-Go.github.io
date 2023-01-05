@@ -95,6 +95,7 @@
   display: flex;
   //   align-items: center;
   justify-content: center;
+  //   margin-top: 164px;
 
   .text {
     @include base.title-second-text;
@@ -109,16 +110,21 @@
   align-items: center;
   //   justify-content: center;
   .blank-l {
-    flex-basis: 400px;
-    flex-grow: 0;
-    flex-shrink: 0;
+    flex-basis: 580px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 430px;
   }
 
   .text {
+    width: 100%;
+    max-width: 840px;
     flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    // flex-direction: column;
+    // flex-basis: 830px;
     @include base.title-first-text;
     color: base.$back-color;
     font-family: PingFangSC-Heavy;
@@ -126,7 +132,7 @@
 
   .blank-r {
     flex-basis: 150px;
-    flex-grow: 0;
+    flex-grow: 2.5;
     flex-shrink: 0;
   }
 }
