@@ -1,0 +1,74 @@
+@use "./base.scss";
+// @use "./ContentPageCatalog.scss";
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 164px;
+
+  background-color: base.$back-common-color;
+
+  .blank-l {
+    flex-basis: 580px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 430px;
+  }
+
+  .content-container {
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+    padding-top: 32px;
+    flex-direction: column;
+    gap: 50px;
+
+    max-width: 840px;
+    .tips {
+      @include base.text-gray;
+      text-align: center;
+      padding-bottom: 50px;
+    }
+
+    .section {
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+
+      .section-title-number {
+        @include base.title-second-text;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      .section-title {
+        @include base.title-second-text;
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        .little-title {
+          @include base.title-third-text;
+          font-weight: bold;
+        }
+
+        .text {
+          @include base.content-text;
+        }
+
+        .pic {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+  .blank-r {
+    flex-basis: 150px;
+    flex-grow: 2.5;
+    flex-shrink: 0;
+  }
+}
