@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, Suspense } from "react";
 import classNames from "classnames";
 
 import PageHeader, { PageFooter } from "./PageHeader";
+import { Spinner } from "../App";
 // import Catalog from "./Catalog";
 
 import "../styles/ContentPageCatalog.scss";
@@ -14,12 +15,12 @@ export interface IContent {
   content: string[];
 }
 
-interface ICategory {
+export interface ICategory {
   id: string;
   title: string;
 }
 
-interface ICatalog {
+export interface ICatalog {
   category: ICategory[];
   activeID: string;
   changeActiveID: (text: string) => void;
@@ -46,7 +47,7 @@ interface ICateItemRange {
   end: number;
 }
 
-const Catalog = (props: ICatalog) => {
+export const Catalog = (props: ICatalog) => {
   const { category, activeID, changeActiveID } = props;
   const categoryElements = useRef<Array<ICateItemRange>>([]);
   const ticking = useRef<boolean>(false);
@@ -87,7 +88,7 @@ const Catalog = (props: ICatalog) => {
 
   useEffect(() => {
     const body = document.getElementsByTagName("body")[0];
-    console.log(categoryElements.current);
+    // console.log(categoryElements.current);
     body.onscroll = (e: any) => {
       if (!ticking.current) {
         window.requestAnimationFrame(() => {
@@ -97,7 +98,7 @@ const Catalog = (props: ICatalog) => {
               (item) => item.start <= top + 110 && item.end > top + 110
             );
 
-          console.log(top);
+          //   console.log(top);
 
           if (target) {
             changeActiveID(target.id);
@@ -143,22 +144,24 @@ const Catalog = (props: ICatalog) => {
 const Section = (props: ISection) => {
   const { id, title, content } = props;
   return (
-    <div className="section" id={id}>
-      <div className="section-title">{title}</div>
-      <div className="section-words">
-        {content.map((item, index) =>
-          isValidHttpUrl(item) ? (
-            <img key={index} className="pic" src={item} alt="pic" />
-          ) : (
-            <div
-              key={index}
-              className="section-word"
-              dangerouslySetInnerHTML={{ __html: item }}
-            />
-          )
-        )}
+    <Suspense fallback={<Spinner />}>
+      <div className="section" id={id}>
+        <div className="section-title">{title}</div>
+        <div className="section-words">
+          {content.map((item, index) =>
+            isValidHttpUrl(item) ? (
+              <img key={index} className="pic" src={item} alt="pic" />
+            ) : (
+              <div
+                key={index}
+                className="section-word"
+                dangerouslySetInnerHTML={{ __html: item }}
+              />
+            )
+          )}
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 };
 
