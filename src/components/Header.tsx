@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
 
 import { tranObjToArr } from "../utils";
+import { ReactComponent as HamIcon } from "../assets/ham.svg";
 
 interface INavItem {
   target: string;
@@ -40,6 +41,7 @@ const dictList = [
 const Header = () => {
   const location = useLocation();
   const [activeID, setActiveID] = useState<string>(dict[location.pathname]);
+  const [ham, setHam] = useState<Boolean>(false);
 
   useEffect(() => {
     setActiveID(activeID);
@@ -49,9 +51,13 @@ const Header = () => {
     setActiveID(text);
   };
 
+  const changeHam = () => {
+    setHam(!ham);
+  };
+
   return (
-    <>
-      <div className="wrapper">
+    <div className="header">
+      <div className="wrapper ">
         <div className="logo">
           <Link to="/" onClick={() => changeActive("首页")}>
             KarKit
@@ -70,9 +76,13 @@ const Header = () => {
             ))}
           </ol>
         </nav>
+        <div onClick={changeHam} className="ham">
+          <HamIcon />
+        </div>
       </div>
+      <div className={ham ? "active" : ""}></div>
       <div className="blank"></div>
-    </>
+    </div>
   );
 };
 

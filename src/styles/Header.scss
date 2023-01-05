@@ -1,122 +1,184 @@
 @use "./base.scss";
-.wrapper {
-  width: 100%;
-  height: 72px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  background-color: base.$back-color;
-  box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  //   position: absolute;
 
-  gap: 128px;
+.header {
+  .wrapper {
+    width: 100%;
+    height: 72px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: base.$back-color;
+    box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.1);
+    z-index: 10;
 
-  //   some test
+    gap: 72px;
 
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 2;
-  //   end
+    //   some test
+    position: fixed;
+    // position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    //   end
 
-  .logo {
-    width: 180px;
-    height: 100%;
-    line-height: 72px;
-    // margin-top: 27px;
-    @include base.Logo-size;
+    .logo {
+      width: 160px;
+      height: 100%;
+      line-height: 72px;
+      // margin-top: 27px;
+      @include base.Logo-size;
 
-    a {
-      color: base.$text-color;
-      text-decoration: none;
-    }
-  }
-
-  nav {
-    ol {
-      display: flex;
-      gap: 53px;
-      margin: 0;
-      padding: 0;
-      margin-top: 5px;
-      .nav-item {
+      a {
+        color: base.$text-color;
         text-decoration: none;
-        @include base.nav-size;
-        height: 62px;
+      }
+    }
+
+    nav {
+      ol {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        border-radius: 5px;
-
-        // 正常变化
-        transition: all 0.3s;
-        &:hover {
-          font-weight: bold;
-          transition: all 0.3s;
-        }
-
-        &.active {
-          font-weight: bold;
-          background-color: base.$back-common-color;
-          transition: all 0.5s;
-        }
-
-        // // 方向渐变
-        // position: relative;
-        // background-color: #fff;
-        // &::before,
-        // &::after {
-        //   content: "";
-        //   position: absolute;
-        //   left: 0;
-        //   top: 0;
-        //   width: 0;
-        //   height: 100%;
-        //   background: #fff;
-        //   z-index: -1;
-        // }
-
-        // &::before {
-        //   z-index: 1;
-        //   background-color: base.$hover-color;
-        //   transition: 1s;
-        // }
-
-        // &:hover {
-        //   background: transparent;
-        // }
-
-        // &:hover::before,
-        // &:hover::after {
-        //   width: 100%;
-        // }
-
-        a {
+        gap: 53px;
+        margin: 0;
+        padding: 0;
+        margin-top: 5px;
+        .nav-item {
           text-decoration: none;
-          color: base.$text-color;
-          width: auto;
-          height: 42px;
-          margin: 0 10px;
-          line-height: 42px;
-          z-index: 2;
+          @include base.nav-size;
+          height: 62px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          border-radius: 5px;
+
+          // 正常变化
+          transition: all 0.3s;
+          &:hover {
+            font-weight: bold;
+            transition: all 0.3s;
+          }
+
+          &.active {
+            font-weight: bold;
+            background-color: base.$back-common-color;
+            transition: all 0.5s;
+          }
+
+          // // 方向渐变
+          // position: relative;
+          // background-color: #fff;
+          // &::before,
+          // &::after {
+          //   content: "";
+          //   position: absolute;
+          //   left: 0;
+          //   top: 0;
+          //   width: 0;
+          //   height: 100%;
+          //   background: #fff;
+          //   z-index: -1;
+          // }
+
+          // &::before {
+          //   z-index: 1;
+          //   background-color: base.$hover-color;
+          //   transition: 1s;
+          // }
+
+          // &:hover {
+          //   background: transparent;
+          // }
+
+          // &:hover::before,
+          // &:hover::after {
+          //   width: 100%;
+          // }
+
+          a {
+            text-decoration: none;
+            color: base.$text-color;
+            width: auto;
+            height: 42px;
+            margin: 0 10px;
+            line-height: 42px;
+            z-index: 2;
+          }
+        }
+      }
+    }
+
+    .ham {
+      display: none;
+      cursor: pointer;
+
+      svg {
+        stroke: base.$text-color;
+        transition: stroke 0.3s ease-in-out;
+      }
+
+      &:hover {
+        svg {
+          stroke: #3f8ff7;
+          transition: fill 0.3s ease-in-out;
         }
       }
     }
   }
+  .active {
+    width: 100%;
+    height: 240px;
+    background-color: base.$back-common-color;
+    position: fixed;
+    display: flex;
+  }
+  .blank {
+    margin-top: 72px;
+  }
 }
 
-.blank {
-  margin-top: 72px;
-}
+// media query
+@media (max-width: 992px) {
+  .header {
+    .wrapper {
+      justify-content: space-between;
+      .logo {
+        width: auto;
+        height: 100%;
+        line-height: 72px;
+        padding-left: 72px; // margin-top: 27px;
+        @include base.Logo-size;
 
-// // media query
-// .wrapper {
-//   @media (max-width: 992px) {
-//     nav {
-//       display: none;
-//     }
-//   }
-// }
+        a {
+          color: base.$text-color;
+          text-decoration: none;
+        }
+      }
+
+      nav {
+        display: none;
+      }
+
+      .ham {
+        display: block;
+        width: 48px;
+        height: 48px;
+        // background-color: red;
+        margin-right: 72px;
+        z-index: 15;
+
+        // svg {
+        //   fill: #838383;
+        // }
+
+        // &:hover {
+        //   svg {
+        //     stroke: #3f8ff7;
+        //     transition: stroke 0.3s ease-in-out;
+        //   }
+        // }
+      }
+    }
+  }
+}
