@@ -1,5 +1,4 @@
 @use "./base.scss";
-// @use "./ContentPageCatalog.scss";
 
 .content-wrapper {
   display: flex;
@@ -44,6 +43,7 @@
       .section-title {
         @include base.title-second-text;
         color: rgba(0, 0, 0, 1);
+        width: auto;
       }
 
       .content {
@@ -70,5 +70,56 @@
     flex-basis: 150px;
     flex-grow: 2.5;
     flex-shrink: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .content-wrapper {
+    .blank-l {
+      flex-basis: 380px;
+      flex-grow: 1;
+      flex-shrink: 1;
+      min-width: 230px;
+    }
+
+    .blank-r {
+      flex-basis: 60px;
+      flex-grow: 2.5;
+      flex-shrink: 0;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .content-wrapper {
+    .blank-l,
+    .blank-r {
+      display: none;
+    }
+
+    .content-container {
+      padding: 32px 32px 0px 32px;
+      gap: 24px;
+
+      .tips {
+        @include base.text-gray-mobile;
+        padding-bottom: 24px;
+      }
+      .section {
+        .section-title-number,
+        .section-title {
+          @include base.title-second-text-mobile;
+        }
+        .content {
+          .little-title {
+            @include base.title-third-text-mobile;
+          }
+
+          .text {
+            @include base.content-text-mobile;
+          }
+        }
+      }
+    }
   }
 }

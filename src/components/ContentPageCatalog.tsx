@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState, Suspense } from "react";
 import classNames from "classnames";
 
+import { ReactComponent as MarkIcon } from "../assets/bookmark.svg";
+
 import PageHeader, { PageFooter } from "./PageHeader";
 import { Spinner } from "../App";
 // import Catalog from "./Catalog";
@@ -168,7 +170,7 @@ const Section = (props: ISection) => {
 const Content = (props: IContents) => {
   const { contentList } = props;
   return (
-    <div className="content-wrapper">
+    <div id="content-wrapper" className="content-wrapper">
       <div className="blank-l" />
       <div className="content-container">
         {contentList.map((item) => {
@@ -191,6 +193,7 @@ const ContentPageCatalog = (props: IContentsPage) => {
   const { title, contentList } = props;
 
   const [activeID, setActiveID] = useState<string>(contentList[0].id);
+  const [activeCata, setActiveCata] = useState<boolean>(false);
 
   const catalogs: ICategory[] = contentList.map((item) => {
     return { id: item.id, title: item.title };
@@ -199,8 +202,31 @@ const ContentPageCatalog = (props: IContentsPage) => {
     setActiveID(target);
   };
 
+  const changeCata = (target: boolean) => {
+    setActiveCata(target);
+  };
+
+  const cnForCata = classNames("cata", { activeCata: activeCata });
+
   return (
     <div>
+      <div className={cnForCata}>
+        <div
+          onClick={() => {
+            changeCata(!activeCata);
+          }}
+          className="icon"
+        >
+          <MarkIcon />
+        </div>
+      </div>
+      <div className={activeCata ? "activeCa" : ""}></div>
+      <div
+        onClick={() => {
+          changeCata(false);
+        }}
+        className={activeCata ? "blur" : ""}
+      ></div>
       <PageHeader text={title} />
       <Catalog
         category={catalogs}
