@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "../styles/Header.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
+
+import { tranObjToArr } from "../utils";
 
 interface INavItem {
   target: string;
@@ -20,55 +22,53 @@ const NavItem = (props: INavItem) => {
   );
 };
 
+const dict: { [key: string]: string } = {
+  "/": "首页",
+  "/design": "设计流程",
+  "/tool": "工具介绍",
+  "/book": "操作手册",
+  "/team": "设计团队",
+};
+const dictList = [
+  { target: "/", text: "首页" },
+  { target: "/design", text: "设计流程" },
+  { target: "/tool", text: "工具介绍" },
+  { target: "/book", text: "操作手册" },
+  { target: "/team", text: "设计团队" },
+];
+
 const Header = () => {
-  const [activeID, setActiveID] = useState<string>("");
+  const location = useLocation();
+  const [activeID, setActiveID] = useState<string>(dict[location.pathname]);
 
   const changeActive = (text: string) => {
     setActiveID(text);
   };
 
   return (
-    <div className="wrapper">
-      <div className="logo">
-        <Link to="/" onClick={() => changeActive("首页")}>
-          KarKit
-        </Link>
+    <>
+      <div className="wrapper">
+        <div className="logo">
+          <Link to="/" onClick={() => changeActive("首页")}>
+            KarKit
+          </Link>
+        </div>
+        <nav>
+          <ol>
+            {dictList.map((item, index) => (
+              <NavItem
+                key={index}
+                target={item.target}
+                text={item.text}
+                activeID={activeID}
+                changeActive={changeActive}
+              />
+            ))}
+          </ol>
+        </nav>
       </div>
-      <nav>
-        <ol>
-          <NavItem
-            target="/"
-            text="首页"
-            activeID={activeID}
-            changeActive={changeActive}
-          />
-          <NavItem
-            target="/design"
-            text="设计流程"
-            activeID={activeID}
-            changeActive={changeActive}
-          />
-          <NavItem
-            target="/tool"
-            text="工具介绍"
-            activeID={activeID}
-            changeActive={changeActive}
-          />
-          <NavItem
-            target="/book"
-            text="操作手册"
-            activeID={activeID}
-            changeActive={changeActive}
-          />
-          <NavItem
-            target="/team"
-            text="设计团队"
-            activeID={activeID}
-            changeActive={changeActive}
-          />
-        </ol>
-      </nav>
-    </div>
+      <div className="blank"></div>
+    </>
   );
 };
 
