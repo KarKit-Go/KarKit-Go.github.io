@@ -16,7 +16,7 @@ const Catalog = (props: ICatalog) => {
       <div className="container">
         {category.map((item) => {
           return (
-            <div className="item-wrapper active" key={item.id}>
+            <div className="item-wrapper" key={item.id}>
               <div className="item">{item.title}</div>
             </div>
           );

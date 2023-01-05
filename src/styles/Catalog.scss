@@ -1,0 +1,47 @@
+@use "./base.scss";
+
+.catalog-wrapper {
+  width: 400px;
+  height: auto;
+  background-color: base.$back-color;
+  position: absolute;
+  top: 72px;
+  z-index: 1;
+
+  .container {
+    margin-top: 72px;
+    margin-left: 224px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .item-wrapper {
+      width: 100%;
+      height: 54px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      .item {
+        @include base.catalog-text;
+        color: rgba(0, 0, 0, 0.5);
+        transition: all 0.5s;
+      }
+
+      &:hover {
+        .item {
+          color: rgb(0, 0, 0);
+          transition: all 0.5s;
+        }
+      }
+
+      &.active {
+        background-color: base.$back-common-color;
+        transition: all 0.5s;
+      }
+    }
+  }
+}
