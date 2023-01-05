@@ -1,3 +1,6 @@
+import React, { useEffect, useRef, useState } from "react";
+import classNames from "classnames";
+
 import PageHeader, { PageFooter } from "./PageHeader";
 // import Catalog from "./Catalog";
 
@@ -18,6 +21,8 @@ interface ICategory {
 
 interface ICatalog {
   category: ICategory[];
+  activeID: string;
+  changeActiveID: (text: string) => void;
 }
 
 interface ISection {
@@ -35,13 +40,80 @@ export interface IContentsPage {
   contentList: IContent[];
 }
 
+interface ICateItemRange {
+  id: string;
+  start: number;
+  end: number;
+}
+
 const Catalog = (props: ICatalog) => {
-  const { category } = props;
+  const { category, activeID, changeActiveID } = props;
+  const categoryElements = useRef<Array<ICateItemRange>>([]);
+  const ticking = useRef<boolean>(false);
+
+  useEffect(() => {
+    categoryElements.current = [];
+    category.forEach((item, index) => {
+      const id = item.id;
+      const eleTemp: HTMLElement = document.querySelector(
+        `#${id}`
+      ) as HTMLElement;
+      let itemTopRange: ICateItemRange = {
+        id,
+        start: 0,
+        end: 0,
+      };
+
+      if (index === category.length - 1) {
+        itemTopRange = {
+          id,
+          start: eleTemp.offsetTop,
+          end: document.body.offsetHeight,
+        };
+      } else {
+        const nextItem: ICategory = category[index + 1];
+        const nextEleTemp: HTMLElement = document.querySelector(
+          `#${nextItem.id}`
+        ) as HTMLElement;
+        itemTopRange = {
+          id,
+          start: eleTemp.offsetTop,
+          end: nextEleTemp.offsetTop,
+        };
+      }
+      categoryElements.current.push(itemTopRange);
+    });
+  }, [category]);
+
+  useEffect(() => {
+    const body = document.getElementsByTagName("body")[0];
+    console.log(categoryElements.current);
+    body.onscroll = (e: any) => {
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          const top: number = e.target.documentElement.scrollTop || 0;
+          const target: ICateItemRange | undefined =
+            categoryElements.current.find(
+              (item) => item.start <= top + 110 && item.end > top + 110
+            );
+
+          console.log(top);
+
+          if (target) {
+            changeActiveID(target.id);
+          }
+          ticking.current = false;
+        });
+        ticking.current = true;
+      }
+    };
+  });
+
   const moveToTarget = (targetID: string) => {
     const elementTemp: HTMLElement = document.querySelector(
       `#${targetID}`
     ) as HTMLElement;
-
+    changeActiveID(targetID);
     const { offsetTop } = elementTemp;
     window.scrollTo({ top: offsetTop - 100 });
   };
@@ -50,9 +122,12 @@ const Catalog = (props: ICatalog) => {
     <div className="catalog-wrapper">
       <div className="container">
         {category.map((item) => {
+          const cn = classNames("item-wrapper", {
+            active: activeID === item.id,
+          });
           return (
             <div
-              className="item-wrapper"
+              className={cn}
               key={item.id}
               onClick={() => moveToTarget(item.id)}
             >
@@ -111,14 +186,24 @@ const Content = (props: IContents) => {
 
 const ContentPageCatalog = (props: IContentsPage) => {
   const { title, contentList } = props;
+
+  const [activeID, setActiveID] = useState<string>(contentList[0].id);
+
   const catalogs: ICategory[] = contentList.map((item) => {
     return { id: item.id, title: item.title };
   });
+  const changeActiveID = (target: string) => {
+    setActiveID(target);
+  };
 
   return (
     <div>
       <PageHeader text={title} />
-      <Catalog category={catalogs} />
+      <Catalog
+        category={catalogs}
+        activeID={activeID}
+        changeActiveID={changeActiveID}
+      />
       <Content contentList={contentList} />
       <PageFooter />
     </div>
