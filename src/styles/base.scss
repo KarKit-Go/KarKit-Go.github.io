@@ -119,11 +119,23 @@ $text-gray-mobile: 10px;
   color: rgba(0, 0, 0, 0.6);
   line-height: 155%;
 }
+@mixin text-gray-mobile {
+  @include text-base;
+  font-size: $text-gray-mobile;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 135%;
+}
 
 @mixin content-text {
   @include text-base;
   font-size: $text-content;
   line-height: 175%;
+}
+
+@mixin content-text-mobile {
+  @include text-base;
+  font-size: $text-content-mobile;
+  line-height: 150%;
 }
 
 @mixin catalog-text {
