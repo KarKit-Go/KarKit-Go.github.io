@@ -47,12 +47,21 @@ const Header = () => {
     setActiveID(activeID);
   }, [location]);
 
+  useEffect(() => {
+    const body = document.getElementsByTagName("body")[0];
+    body.onscroll = () => {
+      if (ham) {
+        changeHam(false);
+      }
+    };
+  });
+
   const changeActive = (text: string) => {
     setActiveID(text);
   };
 
-  const changeHam = () => {
-    setHam(!ham);
+  const changeHam = (target: boolean) => {
+    setHam(target);
   };
 
   return (
@@ -76,11 +85,27 @@ const Header = () => {
             ))}
           </ol>
         </nav>
-        <div onClick={changeHam} className="ham">
+        <div
+          onClick={() => changeHam(!ham)}
+          className={ham ? "ham actived" : "ham"}
+        >
           <HamIcon />
         </div>
       </div>
-      <div className={ham ? "active" : ""}></div>
+      <div className={ham ? "active1" : "hid"}>
+        <ol>
+          {dictList.map((item, index) => (
+            <NavItem
+              key={index}
+              target={item.target}
+              text={item.text}
+              activeID={activeID}
+              changeActive={changeActive}
+            />
+          ))}
+        </ol>
+      </div>
+      <div onClick={() => changeHam(false)} className={ham ? "blur" : ""}></div>
       <div className="blank"></div>
     </div>
   );
