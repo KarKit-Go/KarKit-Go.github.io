@@ -35,7 +35,7 @@ const Section = (props: ISection) => {
     <Suspense fallback={<Spinner />}>
       <div id={id} className="section">
         <div className="section-title-number">PART{index + 1}</div>
-        <div className="section-title">{title}</div>
+        <div className="section-title-op">{title}</div>
         <div className="tips">{tips}</div>
         <div
           className="content"
