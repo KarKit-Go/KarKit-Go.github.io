@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 import "../styles/Homepage.scss";
 
 import { PageFooter } from "./PageHeader";

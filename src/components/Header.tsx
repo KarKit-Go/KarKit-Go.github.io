@@ -1,10 +1,11 @@
-import { useState, useRef, useEffect } from "react";
-import "../styles/Header.scss";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+
 import classNames from "classnames";
 
-import { tranObjToArr } from "../utils";
 import { ReactComponent as HamIcon } from "../assets/ham.svg";
+
+import "../styles/Header.scss";
 
 interface INavItem {
   target: string;

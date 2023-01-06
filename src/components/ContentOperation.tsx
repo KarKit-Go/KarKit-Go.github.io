@@ -1,11 +1,13 @@
-import React, { useEffect, useRef, useState, Suspense, lazy } from "react";
-import { ICategory, Catalog } from "./ContentPageCatalog";
-import { Spinner } from "../App";
-import PageHeader, { PageFooter } from "./PageHeader";
-import "../styles/ContentOperation.scss";
+import React, { useState, Suspense } from "react";
 import classNames from "classnames";
+
 import { ReactComponent as MarkIcon } from "../assets/bookmark.svg";
 
+import { Spinner } from "../App";
+import { ICategory, Catalog } from "./ContentPageCatalog";
+import PageHeader, { PageFooter } from "./PageHeader";
+
+import "../styles/ContentOperation.scss";
 interface ISection {
   id: string;
   title: string;

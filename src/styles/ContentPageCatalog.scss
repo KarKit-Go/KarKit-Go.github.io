@@ -219,6 +219,7 @@
         .section-words {
           .section-word {
             @include base.content-text-mobile;
+            text-indent: 28px;
           }
         }
       }

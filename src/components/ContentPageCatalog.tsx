@@ -3,9 +3,8 @@ import classNames from "classnames";
 
 import { ReactComponent as MarkIcon } from "../assets/bookmark.svg";
 
-import PageHeader, { PageFooter } from "./PageHeader";
 import { Spinner } from "../App";
-// import Catalog from "./Catalog";
+import PageHeader, { PageFooter } from "./PageHeader";
 
 import "../styles/ContentPageCatalog.scss";
 
